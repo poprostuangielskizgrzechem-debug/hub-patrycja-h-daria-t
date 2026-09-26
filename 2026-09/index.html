@@ -2001,6 +2001,43 @@ video {
       .hub-gram-items li { background:var(--hub-paper); border-radius:8px; padding:7px 11px;
                            font-size:14.5px; color:var(--hub-ink); }
 
+      /* --- notatka graficzna (g.sections) --- */
+      .hub-gsections { display:flex; flex-direction:column; gap:12px; margin-top:14px; }
+      .hub-gcard { --t:var(--hub-blue); --tb:var(--hub-tint); border:1px solid var(--hub-line); border-left:5px solid var(--t);
+                   border-radius:12px; padding:14px 16px; background:#fff; }
+      .tone-red   { --t:var(--hub-accent); --tb:#fdecee; }
+      .tone-green { --t:#1f8a4c; --tb:#e8f5ee; }
+      .tone-gold  { --t:#b7791f; --tb:#fdf6e3; }
+      .hub-gcard-title { font-family:'Plus Jakarta Sans', Arial, sans-serif; font-size:16px; font-weight:800;
+                         color:var(--t); margin:0 0 8px; display:flex; gap:8px; align-items:baseline; }
+      .hub-gcard-emoji { font-size:19px; line-height:1; }
+      .hub-gcard-points { margin:0; padding-left:20px; font-size:15px; line-height:1.6; color:var(--hub-ink); }
+      .hub-gcard-points li + li { margin-top:4px; }
+      .hub-gcard-ex { background:var(--tb); border-radius:10px; padding:10px 13px; margin-top:10px; }
+      .hub-gcard-ex-label { font-family:'Plus Jakarta Sans', Arial, sans-serif; font-size:10.5px; font-weight:700;
+                            text-transform:uppercase; letter-spacing:.8px; color:var(--t); margin:0 0 4px; }
+      .hub-gcard-ex-line { font-size:15px; line-height:1.55; color:var(--hub-ink); margin:0; }
+      .hub-gcard-ex-line + .hub-gcard-ex-line { margin-top:5px; }
+      .hub-hl { color:var(--t); font-weight:800; }
+      .hub-gtable-wrap { overflow-x:auto; }
+      .hub-gtable { width:100%; border-collapse:collapse; font-size:14.5px; line-height:1.5; }
+      .hub-gtable th { font-family:'Plus Jakarta Sans', Arial, sans-serif; font-weight:800; text-align:left;
+                       background:var(--tb); color:var(--hub-ink); padding:8px 10px; }
+      .hub-gtable td { padding:8px 10px; border-top:1px solid var(--hub-line); vertical-align:top; color:var(--hub-ink); }
+      .hub-gtable td + td, .hub-gtable th + th { border-left:1px solid var(--hub-line); }
+      .hub-gtip { --t:var(--hub-blue); --tb:var(--hub-tint); display:flex; gap:12px; align-items:flex-start;
+                  background:var(--tb); border-radius:12px; padding:13px 16px; }
+      .hub-gtip-emoji { font-size:22px; line-height:1.2; flex-shrink:0; }
+      .hub-gtip-title { font-family:'Plus Jakarta Sans', Arial, sans-serif; font-size:15px; font-weight:800; color:var(--t); margin:0 0 3px; }
+      .hub-gtip-text { font-size:15px; line-height:1.6; color:var(--hub-ink); margin:0; white-space:pre-line; }
+      @media (max-width:520px) {
+        .hub-gram:has(.hub-gsections) { padding:14px 10px; }
+        .hub-gcard { padding:12px 11px; }
+        .hub-gtip { padding:12px 11px; gap:9px; }
+        .hub-gtable { font-size:13.5px; }
+        .hub-gtable th, .hub-gtable td { padding:7px 6px; }
+      }
+
       /* --- kafelki linkow --- */
       .hub-links { display:flex; flex-direction:column; gap:8px; margin-top:14px; }
       .hub-link-tile { display:flex; align-items:center; gap:12px; text-decoration:none;
@@ -2534,6 +2571,14 @@ video {
             .hub-ex-opt.is-ok { border-color: #16a34a; background: #f0fdf4; color: #15803d; }
             .hub-ex-opt.is-bad { border-color: #dc2626; background: #fef2f2; color: #b91c1c; text-decoration: line-through; }
             .hub-ex-opt.is-key { border-color: #16a34a; border-style: dashed; }
+            .hub-ex-table-wrap { overflow-x: auto; margin: 0 0 12px; }
+            .hub-ex-table { width: 100%; border-collapse: collapse; }
+            .hub-ex-table th { text-align: left; font-size: 13px; text-transform: uppercase; letter-spacing: .04em; color: var(--hub-muted); padding: 4px 6px 8px; }
+            .hub-ex-table td { padding: 8px 6px; border-top: 1px solid var(--hub-line); vertical-align: middle; }
+            .hub-ex-table td.hub-ex-num { width: 1%; white-space: nowrap; }
+            .hub-ex-table .hub-ex-input { width: 100%; min-width: 90px; text-align: left; }
+            .hub-ex-img { width: 1%; }
+            .hub-ex-img svg { display: block; height: 40px; width: auto; max-width: 64px; box-shadow: 0 0 0 1px #cbd5e1; }
             .hub-ex-saved { font-size: 12.5px; color: var(--hub-muted); margin: 0 0 14px; }
         </style>
         <section id="hub-exercises-view" class="hidden no-print flex-grow flex items-start justify-center relative z-20">
@@ -2988,6 +3033,150 @@ video {
                                     "sentenceWithGap": "The third month of the year is [gap].",
                                     "firstLetterHint": "m"
                         }
+            ],
+            "Lekcja 2 (26.09)": [
+                        {
+                                    "word": "Have you got time for me?",
+                                    "translation": "Czy masz dla mnie czas?",
+                                    "definition": "a question asking if someone can spend some time with you",
+                                    "pos": "sent"
+                        },
+                        {
+                                    "word": "Yes, I have/No, I haven't",
+                                    "translation": "Tak, mam/Nie, nie mam",
+                                    "definition": "short answers to a question with 'have got'",
+                                    "pos": "sent"
+                        },
+                        {
+                                    "word": "I've got a cat",
+                                    "translation": "Mam kota",
+                                    "definition": "used to say that a cat is your pet",
+                                    "pos": "sent"
+                        },
+                        {
+                                    "word": "Are you happy?",
+                                    "translation": "Czy jesteś szczęśliwy/szczęśliwa?",
+                                    "definition": "a question asking how someone feels",
+                                    "pos": "sent"
+                        },
+                        {
+                                    "word": "Yes, I am/No, I'm not",
+                                    "translation": "Tak, jestem/Nie, nie jestem",
+                                    "definition": "short answers to a question with 'be'",
+                                    "pos": "sent"
+                        },
+                        {
+                                    "word": "I am happy",
+                                    "translation": "Jestem szczęśliwy/szczęśliwa",
+                                    "definition": "used to say that you feel good",
+                                    "pos": "sent"
+                        },
+                        {
+                                    "word": "You are happy",
+                                    "translation": "Jesteś szczęśliwy/szczęśliwa",
+                                    "definition": "used to say that another person feels good",
+                                    "pos": "sent"
+                        },
+                        {
+                                    "word": "She is funny",
+                                    "translation": "Ona jest zabawna",
+                                    "definition": "used to say that a girl or woman makes people laugh",
+                                    "pos": "sent"
+                        },
+                        {
+                                    "word": "Is she funny?",
+                                    "translation": "Czy ona jest zabawna?",
+                                    "definition": "a question asking if a girl or woman makes people laugh",
+                                    "pos": "sent"
+                        },
+                        {
+                                    "word": "person",
+                                    "translation": "osoba",
+                                    "definition": "a man, woman or child",
+                                    "pos": "n",
+                                    "sentenceWithGap": "The ticket costs 20 złoty for one [gap], so four people pay 80 złoty.",
+                                    "firstLetterHint": "p"
+                        },
+                        {
+                                    "word": "interesting",
+                                    "translation": "ciekawy",
+                                    "definition": "making you want to know more about something",
+                                    "pos": "adj",
+                                    "sentenceWithGap": "This book about dinosaurs is really [gap]. I learn lots of new things from it and I can't stop reading.",
+                                    "firstLetterHint": "i"
+                        },
+                        {
+                                    "word": "clever",
+                                    "translation": "mądry",
+                                    "definition": "able to learn and understand things quickly",
+                                    "pos": "adj",
+                                    "sentenceWithGap": "My sister is very [gap]. She always knows the answers in Maths class.",
+                                    "firstLetterHint": "c"
+                        },
+                        {
+                                    "word": "friendly",
+                                    "translation": "przyjacielski",
+                                    "definition": "kind and pleasant to other people, and easy to talk to",
+                                    "pos": "adj",
+                                    "sentenceWithGap": "The new girl is very [gap]. She smiles and talks to everyone in the class.",
+                                    "firstLetterHint": "f"
+                        },
+                        {
+                                    "word": "funny",
+                                    "translation": "zabawny",
+                                    "definition": "able to make people laugh",
+                                    "pos": "adj",
+                                    "sentenceWithGap": "My brother is really [gap]. He always makes the whole family laugh with his jokes.",
+                                    "firstLetterHint": "f"
+                        },
+                        {
+                                    "word": "helpful",
+                                    "translation": "pomocny",
+                                    "definition": "always ready to help other people",
+                                    "pos": "adj",
+                                    "sentenceWithGap": "My classmate is very [gap]. He always carries my books to the classroom without me even asking.",
+                                    "firstLetterHint": "h"
+                        },
+                        {
+                                    "word": "kind",
+                                    "translation": "miły",
+                                    "definition": "caring and generous towards other people",
+                                    "pos": "adj",
+                                    "sentenceWithGap": "She's a very [gap] person. She always shares her lunch with students who forget theirs.",
+                                    "firstLetterHint": "k"
+                        },
+                        {
+                                    "word": "quiet",
+                                    "translation": "cichy",
+                                    "definition": "not talking or making much noise",
+                                    "pos": "adj",
+                                    "sentenceWithGap": "He's very [gap] in class. He never shouts and rarely speaks unless the teacher asks him.",
+                                    "firstLetterHint": "q"
+                        },
+                        {
+                                    "word": "shy",
+                                    "translation": "nieśmiały",
+                                    "definition": "feeling nervous about talking to people you don't know",
+                                    "pos": "adj",
+                                    "sentenceWithGap": "The new boy is [gap]. He goes red and looks at the floor when people talk to him.",
+                                    "firstLetterHint": "s"
+                        },
+                        {
+                                    "word": "sporty",
+                                    "translation": "wysportowany",
+                                    "definition": "good at sports and physically active",
+                                    "pos": "adj",
+                                    "sentenceWithGap": "My cousin is really [gap]. He plays football, basketball and tennis every week.",
+                                    "firstLetterHint": "s"
+                        },
+                        {
+                                    "word": "happy",
+                                    "translation": "szczęśliwy, wesoły",
+                                    "definition": "feeling good and pleased",
+                                    "pos": "adj",
+                                    "sentenceWithGap": "I am so [gap] today! It's my birthday and I've got a new puppy.",
+                                    "firstLetterHint": "h"
+                        }
             ]
 };
 
@@ -3000,8 +3189,8 @@ video {
         "teacherWhatsApp": "48506152270",
         "storageKey": "hub_patrycja-h-daria-t_2026-09",
         "studentKey": "hub_patrycja-h-daria-t",
-        "stamp": "aktualizacja po lekcji 1, 19.09.2026",
-        "lastLessonPhrase": "lekcji 1",
+        "stamp": "aktualizacja po lekcji 2, 26.09.2026",
+        "lastLessonPhrase": "lekcji 2",
         "lessons": [
                 {
                         "label": "Lekcja 1",
@@ -3009,14 +3198,1234 @@ video {
                         "categoryKey": "Lekcja 1 (19.09)",
                         "vocabCount": 38,
                         "topic": "Przedstawianie się i ulubione rzeczy: hobby, kolory, zwierzęta, jedzenie, oraz miesiące, dni tygodnia i pory roku"
+                },
+                {
+                        "label": "Lekcja 2",
+                        "dateLabel": "26.09.2026",
+                        "categoryKey": "Lekcja 2 (26.09)",
+                        "vocabCount": 20,
+                        "topic": "Czasowniki „be” (być) i „have got” (mieć): twierdzenia, przeczenia, pytania i krótkie odpowiedzi oraz przymiotniki opisujące charakter"
                 }
         ],
-        "grammar": [],
+        "grammar": [
+                {
+                        "lessonLabel": "Lekcja 2",
+                        "dateLabel": "26.09.2026",
+                        "topic": "Czasownik „be” (być): twierdzenia, przeczenia, pytania i krótkie odpowiedzi",
+                        "mistake": "",
+                        "correction": "",
+                        "items": [],
+                        "explanation": "„Be” to po polsku „być”. W czasie teraźniejszym ma trzy formy: am, is, are. Którą wybierasz, zależy od osoby.",
+                        "sections": [
+                                {
+                                        "type": "table",
+                                        "tone": "blue",
+                                        "emoji": "✅",
+                                        "title": "Twierdzenia",
+                                        "head": [
+                                                "Pełna forma",
+                                                "Skrót",
+                                                "Przykład"
+                                        ],
+                                        "rows": [
+                                                [
+                                                        "I **am**",
+                                                        "I'm",
+                                                        "I'm clever."
+                                                ],
+                                                [
+                                                        "You **are**",
+                                                        "You're",
+                                                        "You're funny."
+                                                ],
+                                                [
+                                                        "He **is**",
+                                                        "He's",
+                                                        "He's shy."
+                                                ],
+                                                [
+                                                        "She **is**",
+                                                        "She's",
+                                                        "She's kind."
+                                                ],
+                                                [
+                                                        "It **is**",
+                                                        "It's",
+                                                        "It's friendly. (mój pies 🐶)"
+                                                ],
+                                                [
+                                                        "We **are**",
+                                                        "We're",
+                                                        "We're sporty."
+                                                ],
+                                                [
+                                                        "They **are**",
+                                                        "They're",
+                                                        "They're happy. (małpki 🐒)"
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "type": "table",
+                                        "tone": "red",
+                                        "emoji": "❌",
+                                        "title": "Przeczenia: dodajesz „not”",
+                                        "head": [
+                                                "Pełna forma",
+                                                "Skrót",
+                                                "Przykład"
+                                        ],
+                                        "rows": [
+                                                [
+                                                        "I **am not**",
+                                                        "I'm not",
+                                                        "I'm not shy."
+                                                ],
+                                                [
+                                                        "You **are not**",
+                                                        "You aren't",
+                                                        "You aren't quiet."
+                                                ],
+                                                [
+                                                        "He **is not**",
+                                                        "He isn't",
+                                                        "He isn't helpful."
+                                                ],
+                                                [
+                                                        "She **is not**",
+                                                        "She isn't",
+                                                        "She isn't happy."
+                                                ],
+                                                [
+                                                        "It **is not**",
+                                                        "It isn't",
+                                                        "The tortoise isn't sporty. 🐢"
+                                                ],
+                                                [
+                                                        "We **are not**",
+                                                        "We aren't",
+                                                        "We aren't funny."
+                                                ],
+                                                [
+                                                        "They **are not**",
+                                                        "They aren't",
+                                                        "Lions aren't friendly. 🦁"
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "type": "card",
+                                        "tone": "gold",
+                                        "emoji": "❓",
+                                        "title": "Pytania: am/is/are idzie na początek",
+                                        "points": [
+                                                "You **are** happy. → **Are** you happy?",
+                                                "She **is** funny. → **Is** she funny?"
+                                        ],
+                                        "examples": [
+                                                "**Is** your dog friendly? 🐶",
+                                                "**Are** monkeys funny? 🐒",
+                                                "**Is** the dolphin clever? 🐬",
+                                                "**Am** I clever?"
+                                        ]
+                                },
+                                {
+                                        "type": "table",
+                                        "tone": "green",
+                                        "emoji": "💬",
+                                        "title": "Krótkie odpowiedzi",
+                                        "head": [
+                                                "Pytanie",
+                                                "Tak",
+                                                "Nie"
+                                        ],
+                                        "rows": [
+                                                [
+                                                        "Am I clever?",
+                                                        "Yes, you **are**.",
+                                                        "No, you **aren't**."
+                                                ],
+                                                [
+                                                        "Are you shy?",
+                                                        "Yes, I **am**.",
+                                                        "No, I**'m not**."
+                                                ],
+                                                [
+                                                        "Is he kind?",
+                                                        "Yes, he **is**.",
+                                                        "No, he **isn't**."
+                                                ],
+                                                [
+                                                        "Is she sporty?",
+                                                        "Yes, she **is**.",
+                                                        "No, she **isn't**."
+                                                ],
+                                                [
+                                                        "Is your cat friendly?",
+                                                        "Yes, it **is**.",
+                                                        "No, it **isn't**."
+                                                ],
+                                                [
+                                                        "Are they happy?",
+                                                        "Yes, they **are**.",
+                                                        "No, they **aren't**."
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "type": "tip",
+                                        "tone": "red",
+                                        "emoji": "🚫",
+                                        "title": "Na „tak” bez skrótu",
+                                        "text": "✅ Yes, I am.   ❌ Yes, I'm.\n✅ Yes, she is.   ❌ Yes, she's."
+                                }
+                        ],
+                        "links": [
+                                {
+                                        "label": "Present Simple czasownik to be – ćwiczenia online – Szlifuj swój angielski",
+                                        "url": "https://www.ang.pl/cwiczenia/1904/present-simple-czasownik-be",
+                                        "type": "test",
+                                        "questions": []
+                                }
+                        ]
+                },
+                {
+                        "lessonLabel": "Lekcja 2",
+                        "dateLabel": "26.09.2026",
+                        "topic": "„Have got” (mieć): twierdzenia, przeczenia, pytania i krótkie odpowiedzi",
+                        "mistake": "",
+                        "correction": "",
+                        "items": [],
+                        "explanation": "„Have got” to po polsku „mieć”: zwierzę, rzecz, rodzeństwo, długi ogon. Przy he, she, it zmienia się na „has got”.",
+                        "sections": [
+                                {
+                                        "type": "table",
+                                        "tone": "blue",
+                                        "emoji": "✅",
+                                        "title": "Twierdzenia",
+                                        "head": [
+                                                "Pełna forma",
+                                                "Skrót",
+                                                "Przykład"
+                                        ],
+                                        "rows": [
+                                                [
+                                                        "I **have got**",
+                                                        "I've got",
+                                                        "I've got a cat. 🐱"
+                                                ],
+                                                [
+                                                        "You **have got**",
+                                                        "You've got",
+                                                        "You've got a hamster. 🐹"
+                                                ],
+                                                [
+                                                        "He **has got**",
+                                                        "He's got",
+                                                        "He's got a big dog. 🐕"
+                                                ],
+                                                [
+                                                        "She **has got**",
+                                                        "She's got",
+                                                        "She's got two rabbits. 🐰"
+                                                ],
+                                                [
+                                                        "It **has got**",
+                                                        "It's got",
+                                                        "It's got a long tail."
+                                                ],
+                                                [
+                                                        "We **have got**",
+                                                        "We've got",
+                                                        "We've got a parrot. 🦜"
+                                                ],
+                                                [
+                                                        "They **have got**",
+                                                        "They've got",
+                                                        "They've got funny pets."
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "type": "table",
+                                        "tone": "red",
+                                        "emoji": "❌",
+                                        "title": "Przeczenia: haven't got / hasn't got",
+                                        "head": [
+                                                "Pełna forma",
+                                                "Skrót",
+                                                "Przykład"
+                                        ],
+                                        "rows": [
+                                                [
+                                                        "I **have not got**",
+                                                        "I haven't got",
+                                                        "I haven't got a horse."
+                                                ],
+                                                [
+                                                        "He **has not got**",
+                                                        "He hasn't got",
+                                                        "He hasn't got a pet."
+                                                ],
+                                                [
+                                                        "It **has not got**",
+                                                        "It hasn't got",
+                                                        "A snake hasn't got legs. 🐍"
+                                                ],
+                                                [
+                                                        "They **have not got**",
+                                                        "They haven't got",
+                                                        "Birds haven't got teeth. 🐦"
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "type": "card",
+                                        "tone": "gold",
+                                        "emoji": "❓",
+                                        "title": "Pytania: have/has na początek, „got” zostaje za osobą",
+                                        "points": [
+                                                "You **have got** a pet. → **Have** you **got** a pet?",
+                                                "She **has got** a hamster. → **Has** she **got** a hamster?"
+                                        ],
+                                        "examples": [
+                                                "**Have** you **got** a dog?",
+                                                "**Has** your cat **got** a friend?",
+                                                "**Has** an elephant **got** a long nose? 🐘"
+                                        ]
+                                },
+                                {
+                                        "type": "table",
+                                        "tone": "green",
+                                        "emoji": "💬",
+                                        "title": "Krótkie odpowiedzi",
+                                        "head": [
+                                                "Pytanie",
+                                                "Tak",
+                                                "Nie"
+                                        ],
+                                        "rows": [
+                                                [
+                                                        "Have you got a pet?",
+                                                        "Yes, I **have**.",
+                                                        "No, I **haven't**."
+                                                ],
+                                                [
+                                                        "Has he got a dog?",
+                                                        "Yes, he **has**.",
+                                                        "No, he **hasn't**."
+                                                ],
+                                                [
+                                                        "Has she got a cat?",
+                                                        "Yes, she **has**.",
+                                                        "No, she **hasn't**."
+                                                ],
+                                                [
+                                                        "Has it got wings?",
+                                                        "Yes, it **has**.",
+                                                        "No, it **hasn't**."
+                                                ],
+                                                [
+                                                        "Have they got a parrot?",
+                                                        "Yes, they **have**.",
+                                                        "No, they **haven't**."
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "type": "tip",
+                                        "tone": "red",
+                                        "emoji": "🚫",
+                                        "title": "W krótkiej odpowiedzi nie ma „got”",
+                                        "text": "✅ Yes, I have.   ❌ Yes, I have got.\n✅ No, she hasn't.   ❌ No, she hasn't got."
+                                },
+                                {
+                                        "type": "tip",
+                                        "tone": "blue",
+                                        "emoji": "🔎",
+                                        "title": "He's = he is czy he has?",
+                                        "text": "Patrz, co stoi dalej.\n**He's got** a dog. → jest „got”, więc to **has** (ma).\n**He's** kind. → nie ma „got”, więc to **is** (jest)."
+                                }
+                        ],
+                        "links": [
+                                {
+                                        "label": "036. Have got / Has got | SzlifujAngielski.pl",
+                                        "url": "https://szlifujangielski.pl/ucz-sie/cwiczenia/036-verb-to-have/",
+                                        "type": "test",
+                                        "questions": []
+                                }
+                        ]
+                },
+                {
+                        "lessonLabel": "Lekcja 2",
+                        "dateLabel": "26.09.2026",
+                        "topic": "Przedimki a/an i przedimek zerowy",
+                        "mistake": "",
+                        "correction": "",
+                        "items": [],
+                        "explanation": "A/an stawiasz przed jedną rzeczą, którą da się policzyć. Gdy rzeczy jest więcej albo nie da się ich policzyć, nie stawiasz nic. To jest właśnie przedimek zerowy.",
+                        "sections": [
+                                {
+                                        "type": "card",
+                                        "tone": "blue",
+                                        "emoji": "🅰️",
+                                        "title": "a: przed dźwiękiem spółgłoski",
+                                        "points": [
+                                                "Liczy się to, jak słowo **brzmi**, nie jak się pisze."
+                                        ],
+                                        "examples": [
+                                                "**a** cat",
+                                                "**a** dog",
+                                                "**a** funny monkey",
+                                                "**a** unicorn (czytamy „juni...”, więc „a”)"
+                                        ]
+                                },
+                                {
+                                        "type": "card",
+                                        "tone": "gold",
+                                        "emoji": "🅰️",
+                                        "title": "an: przed dźwiękiem samogłoski (a, e, i, o, u)",
+                                        "points": [
+                                                "Łatwiej się to wymawia: „an elephant” zamiast „a elephant”."
+                                        ],
+                                        "examples": [
+                                                "**an** elephant 🐘",
+                                                "**an** owl 🦉",
+                                                "**an** ant 🐜",
+                                                "**an** interesting book"
+                                        ]
+                                },
+                                {
+                                        "type": "card",
+                                        "tone": "green",
+                                        "emoji": "0️⃣",
+                                        "title": "Zero: nic nie stawiasz",
+                                        "points": [
+                                                "Przed **liczbą mnogą**: cats, dogs, elephants.",
+                                                "Przed rzeczownikami **niepoliczalnymi**: water, milk, bread, money, music."
+                                        ],
+                                        "examples": [
+                                                "I like **cats**. ❌ I like a cats.",
+                                                "I drink **milk**. ❌ I drink a milk.",
+                                                "**Monkeys** are funny."
+                                        ]
+                                },
+                                {
+                                        "type": "table",
+                                        "tone": "gold",
+                                        "emoji": "📋",
+                                        "title": "Wszystko razem",
+                                        "head": [
+                                                "a",
+                                                "an",
+                                                "zero"
+                                        ],
+                                        "rows": [
+                                                [
+                                                        "a cat",
+                                                        "an ant",
+                                                        "cats"
+                                                ],
+                                                [
+                                                        "a friendly dog",
+                                                        "an interesting book",
+                                                        "milk"
+                                                ],
+                                                [
+                                                        "a funny monkey",
+                                                        "an old tortoise",
+                                                        "water"
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "type": "tip",
+                                        "tone": "blue",
+                                        "emoji": "💡",
+                                        "title": "Decyduje słowo tuż po przedimku",
+                                        "text": "**an** elephant, ale **a** big elephant\n**a** cat, ale **an** old cat"
+                                },
+                                {
+                                        "type": "tip",
+                                        "tone": "red",
+                                        "emoji": "🚫",
+                                        "title": "Sam przymiotnik = bez a/an",
+                                        "text": "✅ She is kind.   ❌ She is a kind.\n✅ She is **a** kind girl. (jest rzeczownik girl, więc a)"
+                                }
+                        ],
+                        "links": [
+                                {
+                                        "label": "Przedimki A/AN/THE (a nawet ZERO) | ROCK YOUR ENGLISH #222",
+                                        "url": "https://www.youtube.com/watch?v=W2n0BabdeAk&t=1s",
+                                        "type": "youtube",
+                                        "questions": []
+                                }
+                        ]
+                }
+        ],
         "homework": [],
         "media": [],
-        "pronunciation": [],
-        "writingSpeaking": [],
-        "exercises": [],
+        "pronunciation": [
+                {
+                        "lessonLabel": "Lekcja 2",
+                        "word": "kind",
+                        "translation": "miły",
+                        "note": ""
+                },
+                {
+                        "lessonLabel": "Lekcja 2",
+                        "word": "sporty",
+                        "translation": "wysportowany",
+                        "note": ""
+                },
+                {
+                        "lessonLabel": "Lekcja 2",
+                        "word": "shy",
+                        "translation": "nieśmiały",
+                        "note": ""
+                },
+                {
+                        "lessonLabel": "Lekcja 2",
+                        "word": "friendly",
+                        "translation": "przyjacielski",
+                        "note": ""
+                },
+                {
+                        "lessonLabel": "Lekcja 2",
+                        "word": "funny",
+                        "translation": "zabawny",
+                        "note": ""
+                },
+                {
+                        "lessonLabel": "Lekcja 2",
+                        "word": "happy",
+                        "translation": "szczęśliwy, wesoły",
+                        "note": ""
+                },
+                {
+                        "lessonLabel": "Lekcja 2",
+                        "word": "helpful",
+                        "translation": "pomocny",
+                        "note": ""
+                },
+                {
+                        "lessonLabel": "Lekcja 2",
+                        "word": "clever",
+                        "translation": "mądry",
+                        "note": ""
+                },
+                {
+                        "lessonLabel": "Lekcja 2",
+                        "word": "quiet",
+                        "translation": "cichy",
+                        "note": ""
+                }
+        ],
+        "writingSpeaking": [
+                {
+                        "lessonLabel": "Lekcja 2",
+                        "dateLabel": "26.09.2026",
+                        "title": "Posłuchaj i powtórz: be",
+                        "text": "Are you happy?\nYes, I am.\nNo, I'm not.\nI am happy.\nYou are happy.\nShe is funny.\nIs she funny?"
+                },
+                {
+                        "lessonLabel": "Lekcja 2",
+                        "dateLabel": "26.09.2026",
+                        "title": "Posłuchaj i powtórz: have got",
+                        "text": "Have you got time for me?\nYes, I have.\nNo, I haven't.\nI've got a cat."
+                }
+        ],
+        "exercises": [
+                {
+                        "lessonLabel": "Lekcja 2",
+                        "dateLabel": "26.09.2026",
+                        "title": "1. Am, is czy are?",
+                        "instructions": "Wybierz poprawną formę „be”.",
+                        "layout": "list",
+                        "columns": [],
+                        "wordBox": [],
+                        "letters": false,
+                        "items": [
+                                {
+                                        "text": "My dog [gap] very friendly.",
+                                        "answers": [
+                                                "is"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "am",
+                                                        "is",
+                                                        "are"
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "text": "I [gap] shy.",
+                                        "answers": [
+                                                "am"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "am",
+                                                        "is",
+                                                        "are"
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "text": "Monkeys [gap] funny.",
+                                        "answers": [
+                                                "are"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "am",
+                                                        "is",
+                                                        "are"
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "text": "You [gap] clever!",
+                                        "answers": [
+                                                "are"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "am",
+                                                        "is",
+                                                        "are"
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "text": "The dolphin [gap] happy.",
+                                        "answers": [
+                                                "is"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "am",
+                                                        "is",
+                                                        "are"
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "text": "We [gap] sporty.",
+                                        "answers": [
+                                                "are"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "am",
+                                                        "is",
+                                                        "are"
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "text": "My cat [gap] quiet. It never makes a noise.",
+                                        "answers": [
+                                                "is"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "am",
+                                                        "is",
+                                                        "are"
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "text": "Tom and Kasia [gap] kind.",
+                                        "answers": [
+                                                "are"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "am",
+                                                        "is",
+                                                        "are"
+                                                ]
+                                        ]
+                                }
+                        ]
+                },
+                {
+                        "lessonLabel": "Lekcja 2",
+                        "dateLabel": "26.09.2026",
+                        "title": "2. Przeczenia z „be”",
+                        "instructions": "Zamień zdanie na przeczenie. Wpisz brakujące słowa.",
+                        "layout": "list",
+                        "columns": [],
+                        "wordBox": [],
+                        "letters": false,
+                        "items": [
+                                {
+                                        "text": "I am shy. → I [gap] shy.",
+                                        "answers": [
+                                                [
+                                                        "am not",
+                                                        "'m not"
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "text": "The parrot is quiet. → The parrot [gap] quiet.",
+                                        "answers": [
+                                                [
+                                                        "isn't",
+                                                        "is not"
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "text": "The rabbits are funny. → The rabbits [gap] funny.",
+                                        "answers": [
+                                                [
+                                                        "aren't",
+                                                        "are not"
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "text": "You are helpful. → You [gap] helpful.",
+                                        "answers": [
+                                                [
+                                                        "aren't",
+                                                        "are not"
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "text": "My cat is friendly. → My cat [gap] friendly.",
+                                        "answers": [
+                                                [
+                                                        "isn't",
+                                                        "is not"
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "text": "We are sporty. → We [gap] sporty.",
+                                        "answers": [
+                                                [
+                                                        "aren't",
+                                                        "are not"
+                                                ]
+                                        ]
+                                }
+                        ]
+                },
+                {
+                        "lessonLabel": "Lekcja 2",
+                        "dateLabel": "26.09.2026",
+                        "title": "3. Pytania i krótkie odpowiedzi z „be”",
+                        "instructions": "Wybierz początek pytania, potem wpisz krótką odpowiedź. ✅ = tak, ❌ = nie.",
+                        "layout": "list",
+                        "columns": [],
+                        "wordBox": [],
+                        "letters": false,
+                        "items": [
+                                {
+                                        "text": "[gap] your dog friendly? ✅ Yes, [gap].",
+                                        "answers": [
+                                                "Is",
+                                                "it is"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "Am",
+                                                        "Is",
+                                                        "Are"
+                                                ],
+                                                null
+                                        ]
+                                },
+                                {
+                                        "text": "[gap] you shy? ❌ No, [gap].",
+                                        "answers": [
+                                                "Are",
+                                                [
+                                                        "I'm not",
+                                                        "I am not"
+                                                ]
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "Am",
+                                                        "Is",
+                                                        "Are"
+                                                ],
+                                                null
+                                        ]
+                                },
+                                {
+                                        "text": "[gap] Kasia kind? ✅ Yes, [gap].",
+                                        "answers": [
+                                                "Is",
+                                                "she is"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "Am",
+                                                        "Is",
+                                                        "Are"
+                                                ],
+                                                null
+                                        ]
+                                },
+                                {
+                                        "text": "[gap] the monkeys funny? ✅ Yes, [gap].",
+                                        "answers": [
+                                                "Are",
+                                                "they are"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "Am",
+                                                        "Is",
+                                                        "Are"
+                                                ],
+                                                null
+                                        ]
+                                },
+                                {
+                                        "text": "[gap] the lion friendly? ❌ No, [gap].",
+                                        "answers": [
+                                                "Is",
+                                                [
+                                                        "it isn't",
+                                                        "it is not"
+                                                ]
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "Am",
+                                                        "Is",
+                                                        "Are"
+                                                ],
+                                                null
+                                        ]
+                                },
+                                {
+                                        "text": "[gap] Tom quiet? ❌ No, [gap].",
+                                        "answers": [
+                                                "Is",
+                                                [
+                                                        "he isn't",
+                                                        "he is not"
+                                                ]
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "Am",
+                                                        "Is",
+                                                        "Are"
+                                                ],
+                                                null
+                                        ]
+                                },
+                                {
+                                        "text": "[gap] you and your sister sporty? ✅ Yes, [gap].",
+                                        "answers": [
+                                                "Are",
+                                                "we are"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "Am",
+                                                        "Is",
+                                                        "Are"
+                                                ],
+                                                null
+                                        ]
+                                }
+                        ]
+                },
+                {
+                        "lessonLabel": "Lekcja 2",
+                        "dateLabel": "26.09.2026",
+                        "title": "4. Have got czy has got?",
+                        "instructions": "Wybierz poprawną formę.",
+                        "layout": "list",
+                        "columns": [],
+                        "wordBox": [],
+                        "letters": false,
+                        "items": [
+                                {
+                                        "text": "I [gap] got a cat.",
+                                        "answers": [
+                                                "have"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "have",
+                                                        "has"
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "text": "My sister [gap] got two rabbits.",
+                                        "answers": [
+                                                "has"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "have",
+                                                        "has"
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "text": "The elephant [gap] got big ears.",
+                                        "answers": [
+                                                "has"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "have",
+                                                        "has"
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "text": "We [gap] got a parrot.",
+                                        "answers": [
+                                                "have"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "have",
+                                                        "has"
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "text": "Tom and Ola [gap] got a dog.",
+                                        "answers": [
+                                                "have"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "have",
+                                                        "has"
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "text": "The giraffe [gap] got a long neck.",
+                                        "answers": [
+                                                "has"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "have",
+                                                        "has"
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "text": "You [gap] got a funny hamster.",
+                                        "answers": [
+                                                "have"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "have",
+                                                        "has"
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "text": "My dog [gap] got a long tail.",
+                                        "answers": [
+                                                "has"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "have",
+                                                        "has"
+                                                ]
+                                        ]
+                                }
+                        ]
+                },
+                {
+                        "lessonLabel": "Lekcja 2",
+                        "dateLabel": "26.09.2026",
+                        "title": "5. Haven't got czy hasn't got?",
+                        "instructions": "Wybierz poprawną formę.",
+                        "layout": "list",
+                        "columns": [],
+                        "wordBox": [],
+                        "letters": false,
+                        "items": [
+                                {
+                                        "text": "A snake [gap] got legs.",
+                                        "answers": [
+                                                "hasn't"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "haven't",
+                                                        "hasn't"
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "text": "I [gap] got a horse.",
+                                        "answers": [
+                                                "haven't"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "haven't",
+                                                        "hasn't"
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "text": "Birds [gap] got teeth.",
+                                        "answers": [
+                                                "haven't"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "haven't",
+                                                        "hasn't"
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "text": "My grandma [gap] got a pet.",
+                                        "answers": [
+                                                "hasn't"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "haven't",
+                                                        "hasn't"
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "text": "We [gap] got a garden.",
+                                        "answers": [
+                                                "haven't"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "haven't",
+                                                        "hasn't"
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "text": "The tortoise [gap] got long legs.",
+                                        "answers": [
+                                                "hasn't"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "haven't",
+                                                        "hasn't"
+                                                ]
+                                        ]
+                                }
+                        ]
+                },
+                {
+                        "lessonLabel": "Lekcja 2",
+                        "dateLabel": "26.09.2026",
+                        "title": "6. Pytania i krótkie odpowiedzi z „have got”",
+                        "instructions": "Wybierz początek pytania, potem wpisz krótką odpowiedź. ✅ = tak, ❌ = nie.",
+                        "layout": "list",
+                        "columns": [],
+                        "wordBox": [],
+                        "letters": false,
+                        "items": [
+                                {
+                                        "text": "[gap] you got a pet? ✅ Yes, [gap].",
+                                        "answers": [
+                                                "Have",
+                                                "I have"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "Have",
+                                                        "Has"
+                                                ],
+                                                null
+                                        ]
+                                },
+                                {
+                                        "text": "[gap] your dog got a ball? ❌ No, [gap].",
+                                        "answers": [
+                                                "Has",
+                                                [
+                                                        "it hasn't",
+                                                        "it has not"
+                                                ]
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "Have",
+                                                        "Has"
+                                                ],
+                                                null
+                                        ]
+                                },
+                                {
+                                        "text": "[gap] Ola got a hamster? ✅ Yes, [gap].",
+                                        "answers": [
+                                                "Has",
+                                                "she has"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "Have",
+                                                        "Has"
+                                                ],
+                                                null
+                                        ]
+                                },
+                                {
+                                        "text": "[gap] they got a cat? ❌ No, [gap].",
+                                        "answers": [
+                                                "Have",
+                                                [
+                                                        "they haven't",
+                                                        "they have not"
+                                                ]
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "Have",
+                                                        "Has"
+                                                ],
+                                                null
+                                        ]
+                                },
+                                {
+                                        "text": "[gap] Tom got a parrot? ❌ No, [gap].",
+                                        "answers": [
+                                                "Has",
+                                                [
+                                                        "he hasn't",
+                                                        "he has not"
+                                                ]
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "Have",
+                                                        "Has"
+                                                ],
+                                                null
+                                        ]
+                                },
+                                {
+                                        "text": "[gap] an elephant got a long nose? ✅ Yes, [gap].",
+                                        "answers": [
+                                                "Has",
+                                                "it has"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "Have",
+                                                        "Has"
+                                                ],
+                                                null
+                                        ]
+                                }
+                        ]
+                },
+                {
+                        "lessonLabel": "Lekcja 2",
+                        "dateLabel": "26.09.2026",
+                        "title": "7. Be czy have got?",
+                        "instructions": "Wybierz poprawną formę. Pamiętaj: be = być, have got = mieć.",
+                        "layout": "list",
+                        "columns": [],
+                        "wordBox": [],
+                        "letters": false,
+                        "items": [
+                                {
+                                        "text": "My dog [gap] friendly.",
+                                        "answers": [
+                                                "is"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "is",
+                                                        "has got"
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "text": "My dog [gap] a long tail.",
+                                        "answers": [
+                                                "has got"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "is",
+                                                        "has got"
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "text": "I [gap] a cat.",
+                                        "answers": [
+                                                "have got"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "am",
+                                                        "have got"
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "text": "I [gap] shy.",
+                                        "answers": [
+                                                "am"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "am",
+                                                        "have got"
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "text": "Monkeys [gap] funny.",
+                                        "answers": [
+                                                "are"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "are",
+                                                        "have got"
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "text": "Monkeys [gap] long tails.",
+                                        "answers": [
+                                                "have got"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "are",
+                                                        "have got"
+                                                ]
+                                        ]
+                                }
+                        ]
+                }
+        ],
         "distractors": [
                 {
                         "word": "pencil",
@@ -3087,6 +4496,51 @@ video {
                         "word": "see you soon",
                         "translation": "do zobaczenia wkrótce",
                         "pos": "phr"
+                },
+                {
+                        "word": "hungry",
+                        "translation": "głodny",
+                        "pos": "adj"
+                },
+                {
+                        "word": "thirsty",
+                        "translation": "spragniony",
+                        "pos": "adj"
+                },
+                {
+                        "word": "wet",
+                        "translation": "mokry",
+                        "pos": "adj"
+                },
+                {
+                        "word": "young",
+                        "translation": "młody",
+                        "pos": "adj"
+                },
+                {
+                        "word": "short",
+                        "translation": "niski",
+                        "pos": "adj"
+                },
+                {
+                        "word": "blond",
+                        "translation": "jasnowłosy",
+                        "pos": "adj"
+                },
+                {
+                        "word": "Can you swim?",
+                        "translation": "Czy umiesz pływać?",
+                        "pos": "sent"
+                },
+                {
+                        "word": "Yes, I can/No, I can't",
+                        "translation": "Tak, umiem/Nie, nie umiem",
+                        "pos": "sent"
+                },
+                {
+                        "word": "Where are you from?",
+                        "translation": "Skąd jesteś?",
+                        "pos": "sent"
                 }
         ],
         "priorityVerbs": [],
@@ -3277,6 +4731,72 @@ video {
                         "lessons": [
                                 "Lekcja 1"
                         ]
+                },
+                {
+                        "word": "person",
+                        "lessons": [
+                                "Lekcja 2"
+                        ]
+                },
+                {
+                        "word": "interesting",
+                        "lessons": [
+                                "Lekcja 2"
+                        ]
+                },
+                {
+                        "word": "clever",
+                        "lessons": [
+                                "Lekcja 2"
+                        ]
+                },
+                {
+                        "word": "friendly",
+                        "lessons": [
+                                "Lekcja 2"
+                        ]
+                },
+                {
+                        "word": "funny",
+                        "lessons": [
+                                "Lekcja 2"
+                        ]
+                },
+                {
+                        "word": "helpful",
+                        "lessons": [
+                                "Lekcja 2"
+                        ]
+                },
+                {
+                        "word": "kind",
+                        "lessons": [
+                                "Lekcja 2"
+                        ]
+                },
+                {
+                        "word": "quiet",
+                        "lessons": [
+                                "Lekcja 2"
+                        ]
+                },
+                {
+                        "word": "shy",
+                        "lessons": [
+                                "Lekcja 2"
+                        ]
+                },
+                {
+                        "word": "sporty",
+                        "lessons": [
+                                "Lekcja 2"
+                        ]
+                },
+                {
+                        "word": "happy",
+                        "lessons": [
+                                "Lekcja 2"
+                        ]
                 }
         ],
         "sentenceCount": 5,
@@ -3285,6 +4805,11 @@ video {
                         "lessonLabel": "Lekcja 1",
                         "dateLabel": "19.09.2026",
                         "text": "Warto nauczyć się miesięcy, dni tygodnia i pór roku - to bazowe słownictwo do zapamiętania na pamięć."
+                },
+                {
+                        "lessonLabel": "Lekcja 2",
+                        "dateLabel": "26.09.2026",
+                        "text": "Zróbcie ćwiczenia na „be” i „have got”, obejrzyjcie filmik o przedimkach a/an i popracujcie ze słówkami z Unit 2."
                 }
         ]
 };
@@ -5075,6 +6600,42 @@ video {
                 .map(function (l) { return { label: l.label, dateLabel: l.dateLabel, items: map[l.label] }; });
         }
 
+        // Notatka graficzna do zagadnienia (opcjonalne g.sections, od 2026-09-25):
+        // kolorowe karty z punktami i przykladami, tabela porownawcza, ramka-wskazowka.
+        // **tekst** w srodku = wyroznienie. Wpisy bez sections renderuja sie jak dotad.
+        function gramInline(s) {
+            return escapeHtml(s).replace(/\*\*(.+?)\*\*/g, '<strong class="hub-hl">$1</strong>');
+        }
+        function renderSections(list) {
+            if (!list || !list.length) return '';
+            return '<div class="hub-gsections">' + list.map(function (s) {
+                var tone = ' tone-' + (s.tone || 'blue');
+                var title = s.title ? '<p class="hub-gcard-title">' +
+                    (s.emoji ? '<span class="hub-gcard-emoji">' + escapeHtml(s.emoji) + '</span>' : '') +
+                    gramInline(s.title) + '</p>' : '';
+                if (s.type === 'tip') {
+                    return '<div class="hub-gtip' + tone + '">' +
+                        (s.emoji ? '<span class="hub-gtip-emoji">' + escapeHtml(s.emoji) + '</span>' : '') +
+                        '<div class="hub-gtip-body">' + (s.title ? '<p class="hub-gtip-title">' + gramInline(s.title) + '</p>' : '') +
+                        '<p class="hub-gtip-text">' + gramInline(s.text || '') + '</p></div></div>';
+                }
+                if (s.type === 'table') {
+                    return '<div class="hub-gcard' + tone + '">' + title +
+                        '<div class="hub-gtable-wrap"><table class="hub-gtable"><thead><tr>' +
+                        (s.head || []).map(function (h) { return '<th>' + gramInline(h) + '</th>'; }).join('') +
+                        '</tr></thead><tbody>' +
+                        (s.rows || []).map(function (r) {
+                            return '<tr>' + r.map(function (c) { return '<td>' + gramInline(c) + '</td>'; }).join('') + '</tr>';
+                        }).join('') + '</tbody></table></div></div>';
+                }
+                var points = (s.points && s.points.length) ? '<ul class="hub-gcard-points">' +
+                    s.points.map(function (p) { return '<li>' + gramInline(p) + '</li>'; }).join('') + '</ul>' : '';
+                var ex = (s.examples && s.examples.length) ? '<div class="hub-gcard-ex"><p class="hub-gcard-ex-label">Przykłady</p>' +
+                    s.examples.map(function (e) { return '<p class="hub-gcard-ex-line">' + gramInline(e) + '</p>'; }).join('') + '</div>' : '';
+                return '<div class="hub-gcard' + tone + '">' + title + points + ex + '</div>';
+            }).join('') + '</div>';
+        }
+
         function renderGrammar() {
             var box = el('hub-grammar-list');
             if (box) {
@@ -5113,6 +6674,7 @@ video {
                             return '<div class="hub-gram">' +
                                 topic + pair + items +
                                 (g.explanation ? '<p class="hub-gram-expl">' + escapeAndLinkify(g.explanation) + '</p>' : '') +
+                                renderSections(g.sections) +
                                 renderLinks(g.links) +
                                 '</div>';
                         }).join('');
@@ -5444,6 +7006,17 @@ video {
             return !!(ch && ch[gap] && ch[gap].length);
         }
         function exLetter(ex, i) { return ex.letters ? String.fromCharCode(65 + i) + ' ' : ''; }
+        // layout "table": text pozycji to komorki rozdzielone "|"; przy svg
+        // pierwsza kolumna jest obrazkiem, wiec komorki z lukami zaczynaja sie od 1.
+        function exCellOffset(ex) { return ex.items.some(function (it) { return it.svg; }) ? 1 : 0; }
+        function exGapColumn(ex, itIdx, gap) {
+            var cells = ex.items[itIdx].text.split('|'), seen = 0;
+            for (var c = 0; c < cells.length; c++) {
+                seen += cells[c].split('[gap]').length - 1;
+                if (gap < seen) return ex.columns[c + exCellOffset(ex)] || '';
+            }
+            return '';
+        }
         // Wynik jednego cwiczenia liczony z zapisanego stanu, nie z DOM - ten sam
         // rachunek dla ekranu i dla wiadomosci na WhatsApp.
         function exResult(exIdx) {
@@ -5457,7 +7030,12 @@ video {
                     if (String(val).trim()) filled++;
                     var good = String(val).trim() && exAccepted(a).some(function (x) { return exNorm(x) === exNorm(val); });
                     if (good) ok++;
-                    else wrong.push({ num: ex.layout === 'text' ? n : (itIdx + 1), val: String(val).trim() });
+                    else wrong.push({
+                        num: ex.layout === 'text' ? n
+                            : ex.layout === 'table' ? (itIdx + 1) + ', ' + exGapColumn(ex, itIdx, gap)
+                            : (itIdx + 1),
+                        val: String(val).trim()
+                    });
                 });
             });
             return { total: total, ok: ok, filled: filled, wrong: wrong };
@@ -5492,6 +7070,25 @@ video {
                 var body;
                 if (ex.layout === 'text') {
                     body = '<p class="hub-ex-text">' + ex.items.map(itemHtml).join(' ') + '</p>';
+                } else if (ex.layout === 'table') {
+                    var withSvg = exCellOffset(ex) === 1;
+                    body = '<div class="hub-ex-table-wrap"><table class="hub-ex-table"><thead><tr><th></th>' +
+                        ex.columns.map(function (c) { return '<th>' + escapeHtml(c) + '</th>'; }).join('') +
+                        '</tr></thead><tbody>' +
+                        ex.items.map(function (it, itIdx) {
+                            var gi = 0;
+                            var cells = it.text.split('|').map(function (cell) {
+                                var parts = cell.split('[gap]');
+                                return '<td>' + parts.map(function (p, i) {
+                                    return escapeHtml(p.trim()) + (i < parts.length - 1 ? gapHtml(it, itIdx, gi++) : '');
+                                }).join('') + '</td>';
+                            }).join('');
+                            // svg pochodzi z hub_input.json i przeszedl walidacje buildera.
+                            return '<tr><td class="hub-ex-num">' + (itIdx + 1) + '.</td>' +
+                                (withSvg ? '<td class="hub-ex-img" aria-hidden="true">' + it.svg + '</td>' : '') +
+                                cells + '</tr>';
+                        }).join('') +
+                        '</tbody></table></div>';
                 } else {
                     body = ex.items.map(function (it, itIdx) {
                         return '<div class="hub-ex-item"><span class="hub-ex-num">' + (itIdx + 1) + '.</span>' + itemHtml(it, itIdx) + '</div>';
