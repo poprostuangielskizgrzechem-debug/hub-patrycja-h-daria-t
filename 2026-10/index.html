@@ -7337,10 +7337,22 @@ video {
             mom: 'mum', math: 'maths', aluminum: 'aluminium', jewelry: 'jewellery', plow: 'plough', donut: 'doughnut',
             catalog: 'catalogue', dialog: 'dialogue', analog: 'analogue', skeptical: 'sceptical', mustache: 'moustache',
             gotten: 'got', fall: 'autumn', apartment: 'flat', vacation: 'holiday', cookie: 'biscuit', cookies: 'biscuits' };
+        // Skroty wpisane bez apostrofu (hasnt, its, im): po usunieciu apostrofow obie
+        // strony rozwijaja sie tak samo. Pomijamy slowa, ktore same sa slowami (were,
+        // well, id, hell, shell, wed). "its" zawsze = it is, takze zaimek dzierzawczy,
+        // co po obu stronach daje to samo.
+        var EX_CONTR = { isnt: 'is not', arent: 'are not', wasnt: 'was not', werent: 'were not',
+            hasnt: 'has not', havent: 'have not', hadnt: 'had not', doesnt: 'does not', dont: 'do not',
+            didnt: 'did not', cant: 'cannot', wont: 'will not', couldnt: 'could not', shouldnt: 'should not',
+            wouldnt: 'would not', mustnt: 'must not', im: 'i am', ive: 'i have', youve: 'you have',
+            weve: 'we have', theyve: 'they have', youre: 'you are', theyre: 'they are',
+            its: 'it is', hes: 'he is', shes: 'she is', thats: 'that is', whats: 'what is', theres: 'there is' };
         function exLoose(x) {
-            return exNorm(x).replace(/can't/g, 'cannot').replace(/won't/g, 'will not').replace(/n't/g, ' not')
+            return exNorm(x).replace(/'s got\b/g, ' has got').replace(/\b(it|he|she|that|there|what|who)s got\b/g, '$1 has got')
+                .replace(/can't/g, 'cannot').replace(/won't/g, 'will not').replace(/n't/g, ' not')
                 .replace(/'re /g, ' are ').replace(/'ve /g, ' have ').replace(/'m /g, ' am ').replace(/'ll /g, ' will ').replace(/'/g, '').replace(/[.,!?;:"()“”„–—-]+/g, ' ')
                 .replace(/\s+/g, ' ').trim().split(' ').map(function (w) {
+                    if (EX_CONTR[w]) return EX_CONTR[w];
                     if (EX_US_UK[w]) return EX_US_UK[w];
                     return w.replace(/^([a-z]*(col|fav|flav|hon|hum|lab|neighb|beh|harb|rum|vap|arm|rig|vig))or(s|ed|ing|ite|ites|ful|able|ly|hood)?$/, '$1our$3')
                         .replace(/([a-z]{2})(i|y)z(e|es|ed|ing|ation|ations)$/, '$1$2s$3')
