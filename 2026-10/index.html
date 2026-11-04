@@ -2200,6 +2200,25 @@ video {
                            font-family:'Plus Jakarta Sans', Arial, sans-serif; font-weight:700;
                            color:var(--hub-ink); background:#fff; outline:none; }
       .hub-rounds select:focus { border-color:var(--hub-blue); }
+      /* Tryb ciemny (2026-11-02): odwrocenie jasnosci calej strony z zachowaniem
+         odcieni (hue-rotate), zdjecia/filmy/emoji odwracane z powrotem. Jeden
+         filtr zamiast nadpisywania setek klas Tailwinda z silnika TGP. */
+      html.hub-dark { filter: invert(.92) hue-rotate(180deg); background:#fff; }
+      html.hub-dark img, html.hub-dark video, html.hub-dark iframe, html.hub-dark picture,
+      html.hub-dark .hub-ex-figure svg { filter: invert(1) hue-rotate(180deg); }
+      /* Przelacznik: okragly przycisk w prawym gornym rogu, granatowy, zeby nie
+         mylil sie z pigulkami nawigacji. */
+      #hub-theme-btn { position:fixed; top:12px; right:12px; z-index:1000; width:44px; height:44px;
+                       display:flex; align-items:center; justify-content:center; padding:0;
+                       border:2px solid #fff; border-radius:50%; background:#123c73; color:#fff;
+                       font-size:20px; line-height:1; cursor:pointer;
+                       box-shadow:0 4px 14px rgba(18,60,115,.35); }
+      #hub-theme-btn:hover { background:#1e5aae; }
+      #hub-theme-btn:focus-visible { outline:3px solid #6f9ad4; outline-offset:2px; }
+      @media print {
+        html.hub-dark, html.hub-dark img, html.hub-dark video, html.hub-dark iframe,
+        html.hub-dark picture, html.hub-dark .hub-ex-figure svg { filter:none; }
+      }
     </style>
     <!-- === HUB MODULE - END (styles) === -->
 </head>
@@ -2234,6 +2253,29 @@ video {
             <button type="button" class="hub-nav-btn" data-hub-nav="games">&#127918; Gry</button>
             <button type="button" class="hub-nav-btn" data-hub-nav="sentences">&#9997;&#65039; Zdania</button>
         </nav>
+        <button type="button" id="hub-theme-btn" class="no-print" aria-pressed="false" title="Tryb ciemny" aria-label="Tryb ciemny">&#127769;</button>
+        <script>
+            // Tryb ciemny (2026-11-02): klasa hub-dark na <html>, wybor zapamietany
+            // lokalnie. Bez localStorage (file://, tryb prywatny) dziala do odswiezenia.
+            (function () {
+                var KEY = 'hub_theme', root = document.documentElement, btn = document.getElementById('hub-theme-btn');
+                function apply(dark) {
+                    root.classList.toggle('hub-dark', dark);
+                    btn.setAttribute('aria-pressed', dark ? 'true' : 'false');
+                    var label = dark ? 'Tryb jasny' : 'Tryb ciemny';
+                    btn.innerHTML = dark ? '&#9728;&#65039;' : '&#127769;';
+                    btn.title = label; btn.setAttribute('aria-label', label);
+                }
+                var saved = null;
+                try { saved = localStorage.getItem(KEY); } catch (e) {}
+                apply(saved === 'dark');
+                btn.addEventListener('click', function () {
+                    var dark = !root.classList.contains('hub-dark');
+                    apply(dark);
+                    try { localStorage.setItem(KEY, dark ? 'dark' : 'light'); } catch (e) {}
+                });
+            })();
+        </script>
         <!-- === HUB MODULE - END (nav) === -->
 
         <main id="config-view" class="tg-shell transition-all relative z-20 max-w-4xl mx-auto w-full">
@@ -3420,6 +3462,90 @@ video {
                                     "sentenceWithGap": "Open your books on [gap] 41.",
                                     "firstLetterHint": "p"
                         }
+            ],
+            "Lekcja 4 (31.10)": [
+                        {
+                                    "word": "country",
+                                    "translation": "kraj",
+                                    "definition": "a land with its own people, e.g. Poland or Spain",
+                                    "pos": "n",
+                                    "sentenceWithGap": "Poland is a [gap] in Europe.",
+                                    "firstLetterHint": "c"
+                        },
+                        {
+                                    "word": "school uniform",
+                                    "translation": "mundurek szkolny",
+                                    "definition": "special clothes that students wear at school",
+                                    "pos": "phr",
+                                    "sentenceWithGap": "In some schools, students wear a [gap] every day.",
+                                    "firstLetterHint": "s"
+                        },
+                        {
+                                    "word": "dangerous",
+                                    "translation": "niebezpieczny",
+                                    "definition": "it can hurt you",
+                                    "pos": "adj",
+                                    "sentenceWithGap": "Sharks are [gap] animals. They can hurt you.",
+                                    "firstLetterHint": "d"
+                        },
+                        {
+                                    "word": "rule",
+                                    "translation": "zasada",
+                                    "definition": "something you must or mustn't do",
+                                    "pos": "n",
+                                    "sentenceWithGap": "The [gap] in our class is: no phones!",
+                                    "firstLetterHint": "r"
+                        },
+                        {
+                                    "word": "hat",
+                                    "translation": "kapelusz, czapka",
+                                    "definition": "you wear it on your head",
+                                    "pos": "n"
+                        },
+                        {
+                                    "word": "with",
+                                    "translation": "z",
+                                    "definition": "together with someone or something",
+                                    "pos": "phr"
+                        },
+                        {
+                                    "word": "without",
+                                    "translation": "bez",
+                                    "definition": "not having someone or something",
+                                    "pos": "phr"
+                        },
+                        {
+                                    "word": "outside",
+                                    "translation": "na zewnątrz",
+                                    "definition": "not in a building",
+                                    "pos": "adv",
+                                    "sentenceWithGap": "It's sunny. Let's play [gap] in the garden!",
+                                    "firstLetterHint": "o"
+                        },
+                        {
+                                    "word": "shade",
+                                    "translation": "cień",
+                                    "definition": "a cool, dark place out of the sun",
+                                    "pos": "n",
+                                    "sentenceWithGap": "It's very hot. Let's sit in the [gap] under the tree.",
+                                    "firstLetterHint": "s"
+                        },
+                        {
+                                    "word": "swimming pool",
+                                    "translation": "basen",
+                                    "definition": "a place with water where you swim",
+                                    "pos": "phr",
+                                    "sentenceWithGap": "I swim in the [gap] every Saturday.",
+                                    "firstLetterHint": "s"
+                        },
+                        {
+                                    "word": "piece of cake",
+                                    "translation": "bułka z masłem (coś bardzo łatwego)",
+                                    "definition": "very easy",
+                                    "pos": "phr",
+                                    "sentenceWithGap": "This test is very easy. It's a [gap]!",
+                                    "firstLetterHint": "p"
+                        }
             ]
 };
 
@@ -3432,8 +3558,8 @@ video {
         "teacherWhatsApp": "48506152270",
         "storageKey": "hub_patrycja-h-daria-t_2026-10",
         "studentKey": "hub_patrycja-h-daria-t",
-        "stamp": "aktualizacja po lekcji 3, 24.10.2026",
-        "lastLessonPhrase": "lekcji 3",
+        "stamp": "aktualizacja po lekcji 4, 31.10.2026",
+        "lastLessonPhrase": "lekcji 4",
         "lessons": [
                 {
                         "label": "Lekcja 1",
@@ -3458,6 +3584,14 @@ video {
                         "vocabCount": 15,
                         "extraVocabCount": 0,
                         "topic": "Unit 3: ubrania. Zeszyt ćwiczeń Unit 2 str. 23 i czytanka z podręcznika Unit 3 str. 41"
+                },
+                {
+                        "label": "Lekcja 4",
+                        "dateLabel": "31.10.2026",
+                        "categoryKey": "Lekcja 4 (31.10)",
+                        "vocabCount": 11,
+                        "extraVocabCount": 0,
+                        "topic": "Unit 3: zadania z zeszytu ćwiczeń"
                 }
         ],
         "grammar": [
@@ -3596,6 +3730,42 @@ video {
                         "lessonLabel": "Lekcja 3",
                         "word": "university",
                         "translation": "uniwersytet",
+                        "note": ""
+                },
+                {
+                        "lessonLabel": "Lekcja 4",
+                        "word": "country",
+                        "translation": "kraj",
+                        "note": ""
+                },
+                {
+                        "lessonLabel": "Lekcja 4",
+                        "word": "children",
+                        "translation": "dzieci",
+                        "note": ""
+                },
+                {
+                        "lessonLabel": "Lekcja 4",
+                        "word": "special",
+                        "translation": "specjalny, wyjątkowy",
+                        "note": ""
+                },
+                {
+                        "lessonLabel": "Lekcja 4",
+                        "word": "dangerous",
+                        "translation": "niebezpieczny",
+                        "note": ""
+                },
+                {
+                        "lessonLabel": "Lekcja 4",
+                        "word": "outside",
+                        "translation": "na zewnątrz",
+                        "note": ""
+                },
+                {
+                        "lessonLabel": "Lekcja 4",
+                        "word": "keys",
+                        "translation": "klucze",
                         "note": ""
                 }
         ],
@@ -4513,6 +4683,261 @@ video {
                                         ]
                                 }
                         ]
+                },
+                {
+                        "multiline": false,
+                        "lessonLabel": "Lekcja 4",
+                        "dateLabel": "31.10.2026",
+                        "title": "1. Czyje to ubranie?",
+                        "instructions": "Wybierzcie poprawne słówko.",
+                        "layout": "list",
+                        "columns": [],
+                        "wordBox": [],
+                        "letters": false,
+                        "strict": false,
+                        "items": [
+                                {
+                                        "text": "Mum has got a red coat. [gap] coat is red.",
+                                        "answers": [
+                                                "Her"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "Her",
+                                                        "His"
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "text": "Dad has got a blue tracksuit. [gap] tracksuit is blue.",
+                                        "answers": [
+                                                "His"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "Her",
+                                                        "His"
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "text": "We have got school uniforms. [gap] uniforms are grey.",
+                                        "answers": [
+                                                "Our"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "Our",
+                                                        "Their"
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "text": "I like [gap] jumper, Patrycja! It's very nice.",
+                                        "answers": [
+                                                "your"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "you",
+                                                        "your"
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "text": "The cat has got a little hat. [gap] hat is pink.",
+                                        "answers": [
+                                                "Its"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "Its",
+                                                        "It's"
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "text": "My cousins have got black jeans. [gap] jeans are black.",
+                                        "answers": [
+                                                "Their"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "Their",
+                                                        "There"
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "text": "I have got a hoodie. [gap] hoodie is grey.",
+                                        "answers": [
+                                                "My"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "My",
+                                                        "Me"
+                                                ]
+                                        ]
+                                },
+                                {
+                                        "text": "Daria, where is [gap] T-shirt?",
+                                        "answers": [
+                                                "your"
+                                        ],
+                                        "choices": [
+                                                [
+                                                        "you",
+                                                        "your"
+                                                ]
+                                        ]
+                                }
+                        ]
+                },
+                {
+                        "multiline": false,
+                        "lessonLabel": "Lekcja 4",
+                        "dateLabel": "31.10.2026",
+                        "title": "2. Wpiszcie przymiotnik dzierżawczy",
+                        "instructions": "Wpiszcie my, your, his, her, its, our albo their. Kliknijcie Sprawdź.",
+                        "layout": "list",
+                        "columns": [],
+                        "wordBox": [],
+                        "letters": false,
+                        "strict": true,
+                        "items": [
+                                {
+                                        "text": "Patrycja has got a sweatshirt. It's [gap] sweatshirt.",
+                                        "answers": [
+                                                "her"
+                                        ]
+                                },
+                                {
+                                        "text": "Tom has got a hat. It's [gap] hat.",
+                                        "answers": [
+                                                "his"
+                                        ]
+                                },
+                                {
+                                        "text": "We have got earrings. They're [gap] earrings.",
+                                        "answers": [
+                                                "our"
+                                        ]
+                                },
+                                {
+                                        "text": "Grandma and grandpa have got coats. They're [gap] coats.",
+                                        "answers": [
+                                                "their"
+                                        ]
+                                },
+                                {
+                                        "text": "I have got a dress. It's [gap] dress.",
+                                        "answers": [
+                                                "my"
+                                        ]
+                                },
+                                {
+                                        "text": "You have got new shoes. They're [gap] shoes.",
+                                        "answers": [
+                                                "your"
+                                        ]
+                                },
+                                {
+                                        "text": "The dog has got a jumper. It's [gap] jumper.",
+                                        "answers": [
+                                                "its"
+                                        ]
+                                }
+                        ]
+                },
+                {
+                        "multiline": false,
+                        "lessonLabel": "Lekcja 4",
+                        "dateLabel": "31.10.2026",
+                        "title": "3. Bella, kot z krótkim ogonem",
+                        "instructions": "Przeciągnijcie słówka z ramki do luk (albo kliknijcie słówko, a potem lukę). Jedno słówko zostaje niewykorzystane. Na końcu kliknijcie Sprawdź.",
+                        "layout": "drag",
+                        "columns": [],
+                        "wordBox": [
+                                "country",
+                                "school uniform",
+                                "dangerous",
+                                "rule",
+                                "hat",
+                                "with",
+                                "without",
+                                "outside",
+                                "shade",
+                                "swimming pool",
+                                "piece of cake"
+                        ],
+                        "letters": false,
+                        "strict": false,
+                        "items": [
+                                {
+                                        "text": "Hi! My name is Tom and this is my cat. Her name is Bella. She is three years old and she has got a very short tail.",
+                                        "answers": []
+                                },
+                                {
+                                        "text": "Bella is from England, but now she lives in a different [gap]: Poland.",
+                                        "answers": [
+                                                "country"
+                                        ]
+                                },
+                                {
+                                        "text": "She has got two brothers, Max and Leo. Their tails are long.",
+                                        "answers": []
+                                },
+                                {
+                                        "text": "Every morning Bella sits [gap] in our garden.",
+                                        "answers": [
+                                                "outside"
+                                        ]
+                                },
+                                {
+                                        "text": "When it is hot, she sleeps in the [gap] under a tree.",
+                                        "answers": [
+                                                "shade"
+                                        ]
+                                },
+                                {
+                                        "text": "Bella doesn't like water, so she never goes into our [gap].",
+                                        "answers": [
+                                                "swimming pool"
+                                        ]
+                                },
+                                {
+                                        "text": "The street is [gap] for cats, so Bella stays in the garden.",
+                                        "answers": [
+                                                "dangerous"
+                                        ]
+                                },
+                                {
+                                        "text": "In our house there is one [gap]: no cats on the table!",
+                                        "answers": [
+                                                "rule"
+                                        ]
+                                },
+                                {
+                                        "text": "My little sister puts her pink [gap] on Bella's head. Bella isn't scared. For her, it's a [gap]!",
+                                        "answers": [
+                                                "hat",
+                                                "piece of cake"
+                                        ]
+                                },
+                                {
+                                        "text": "I've got a [gap] for school, but Bella hasn't got one.",
+                                        "answers": [
+                                                "school uniform"
+                                        ]
+                                },
+                                {
+                                        "text": "At night Bella sleeps [gap] me in my bed. She is my best friend!",
+                                        "answers": [
+                                                "with"
+                                        ]
+                                }
+                        ]
                 }
         ],
         "games": [
@@ -4961,7 +5386,8 @@ video {
                 {
                         "word": "country",
                         "lessons": [
-                                "Lekcja 2"
+                                "Lekcja 2",
+                                "Lekcja 4"
                         ]
                 },
                 {
@@ -5065,6 +5491,66 @@ video {
                         "lessons": [
                                 "Lekcja 3"
                         ]
+                },
+                {
+                        "word": "school uniform",
+                        "lessons": [
+                                "Lekcja 4"
+                        ]
+                },
+                {
+                        "word": "dangerous",
+                        "lessons": [
+                                "Lekcja 4"
+                        ]
+                },
+                {
+                        "word": "rule",
+                        "lessons": [
+                                "Lekcja 4"
+                        ]
+                },
+                {
+                        "word": "hat",
+                        "lessons": [
+                                "Lekcja 4"
+                        ]
+                },
+                {
+                        "word": "with",
+                        "lessons": [
+                                "Lekcja 4"
+                        ]
+                },
+                {
+                        "word": "without",
+                        "lessons": [
+                                "Lekcja 4"
+                        ]
+                },
+                {
+                        "word": "outside",
+                        "lessons": [
+                                "Lekcja 4"
+                        ]
+                },
+                {
+                        "word": "shade",
+                        "lessons": [
+                                "Lekcja 4"
+                        ]
+                },
+                {
+                        "word": "swimming pool",
+                        "lessons": [
+                                "Lekcja 4"
+                        ]
+                },
+                {
+                        "word": "piece of cake",
+                        "lessons": [
+                                "Lekcja 4"
+                        ]
                 }
         ],
         "sentenceCount": 5,
@@ -5083,6 +5569,11 @@ video {
                         "lessonLabel": "Lekcja 3",
                         "dateLabel": "24.10.2026",
                         "text": "Zróbcie zadania z zakładki „Ćwiczenia” na to be i have got. Oczekuję, że opanujecie odmianę tych czasowników perfekcyjnie, zarówno same formy, jak i ich użycie w zdaniach. Poćwiczcie wymowę słówek w zakładce „Wymowa” i regularnie powtarzajcie słówka z fiszkami i testami."
+                },
+                {
+                        "lessonLabel": "Lekcja 4",
+                        "dateLabel": "31.10.2026",
+                        "text": "Ćwiczcie słownictwo z Unit 3 i róbcie zeszyt ćwiczeń na bieżąco. Zróbcie zadania w zakładce „Ćwiczenia” i poćwiczcie wymowę słówek w zakładce „Wymowa”."
                 }
         ]
 };
@@ -6978,8 +7469,12 @@ video {
                 } else {
                     box.innerHTML = groups.map(function (grp, gi) {
                         var isLast = (gi === groups.length - 1);
-                        var head = '<summary class="hub-section-title' + (gi === 0 ? ' is-first' : '') + '">' +
-                            escapeHtml(grp.label) + (grp.dateLabel ? ' &middot; ' + escapeHtml(grp.dateLabel) : '') + '</summary>';
+                        // Ramka lekcji jak w Cwiczeniach (2026-11-02): naglowek "Lekcja N" + data,
+                        // w srodku rozwijana karta z tematem pierwszego wpisu.
+                        var cardTitle = '';
+                        grp.items.some(function (g) { return (cardTitle = g.topic || ''); });
+                        var head = '<summary class="hub-ex-head"><span class="hub-ex-title">' +
+                            escapeHtml(cardTitle || 'Gramatyka i materiały') + '</span></summary>';
                         var body = grp.items.map(function (g) {
                             var pair = '';
                             if (g.mistake || g.correction) {
@@ -7003,7 +7498,7 @@ video {
                             }
                             // Temat wpisany tylko w pierwszym wpisie danego zagadnienia,
                             // kolejne wpisy maja pusty topic i nie powtarzaja naglowka.
-                            var topic = g.topic ? '<p class="hub-gram-topic">' + escapeHtml(g.topic) + '</p>' : '';
+                            var topic = (g.topic && g.topic !== cardTitle) ? '<p class="hub-gram-topic">' + escapeHtml(g.topic) + '</p>' : '';
                             return '<div class="hub-gram">' +
                                 topic + pair + items +
                                 (g.explanation ? '<p class="hub-gram-expl">' + escapeAndLinkify(g.explanation) + '</p>' : '') +
@@ -7011,7 +7506,9 @@ video {
                                 renderLinks(g.links) +
                                 '</div>';
                         }).join('');
-                        return '<details class="hub-lesson-group"' + (isLast ? ' open' : '') + '>' + head + body + '</details>';
+                        return '<section class="hub-ex-ltile"><h3 class="hub-ex-ltile-head"><span>' + escapeHtml(grp.label) + '</span>' +
+                            (grp.dateLabel ? '<span class="hub-ex-ltile-date">' + escapeHtml(grp.dateLabel) + '</span>' : '') + '</h3>' +
+                            '<details class="hub-lesson-group hub-ex-card"' + (isLast ? ' open' : '') + '>' + head + body + '</details></section>';
                     }).join('');
                 }
             }
@@ -7515,9 +8012,14 @@ video {
         }
         // layout "drag": bank = poprawne odpowiedzi wszystkich luk (kazda raz), w
         // kolejnosci luk; w stanie st.v["<it>-<luka>"] = zwrot wstawiony do luki.
+        // Od 2026-11-03: slowa z wordBox, ktorych nie ma w odpowiedziach, ida do banku
+        // jako nadmiarowe (jak "dwa slowa zostaja niewykorzystane" w tescie).
         function dragPhrases(ex) {
             var out = [];
             ex.items.forEach(function (it) { (it.answers || []).forEach(function (a) { out.push(String(exAccepted(a)[0])); }); });
+            (ex.wordBox || []).forEach(function (w) {
+                if (!out.some(function (p) { return exNorm(p) === exNorm(w); })) out.push(String(w));
+            });
             return out;
         }
         // layout "sort": losowa kolejnosc slowek w banku, trzymana w stanie, zeby
@@ -7679,7 +8181,7 @@ video {
                         return '<div class="hub-ex-item"><span class="hub-ex-num">' + (itIdx + 1) + '.</span>' + itemHtml(it, itIdx) + '</div>';
                     }).join('');
                 }
-                var wordBox = (ex.wordBox && ex.wordBox.length)
+                var wordBox = (ex.wordBox && ex.wordBox.length && ex.layout !== 'drag')
                     ? '<div class="hub-ex-box">' + ex.wordBox.map(function (w) { return '<span>' + escapeHtml(w) + '</span>'; }).join('') + '</div>'
                     : '';
                 // Rozwiniete tylko pierwsze cwiczenie - cala lista naraz przytlacza.
@@ -8046,6 +8548,13 @@ video {
                     exSave();
                     applyEx(gEx);
                     refreshExShare();
+                    // Same luki do klikniecia nie maja "Sprawdz" (exAllChoice), wiec
+                    // wynik idzie do apki po kliknieciu ostatniej luki (2026-11-03).
+                    // Kliknieta luka sie blokuje, wiec komplet zdarza sie raz na probe.
+                    if (exAllChoice(EXERCISES[gEx])) {
+                        var gR = exResult(gEx);
+                        if (gR.filled === gR.total) hubAppSendEx(gEx);
+                    }
                     return;
                 }
                 var rr = e.target.closest ? e.target.closest('[data-ex-reroll]') : null;
@@ -8078,6 +8587,7 @@ video {
                     exSave();
                     applyEx(tEx);
                     refreshExShare();
+                    if (tf.hasAttribute('data-tf-check') && EXERCISES[tEx].items.every(function (it, i) { return tSt.ic[i]; })) hubAppSendEx(tEx);
                     if (tf.hasAttribute('data-tf-fix')) {
                         var inp = box.querySelector('.hub-ex-input[data-ex="' + tEx + '"][data-it="' + tIt + '"]');
                         if (inp) inp.focus();
@@ -8098,6 +8608,7 @@ video {
                 exSave();
                 applyEx(exIdx);
                 refreshExShare();
+                if (t.hasAttribute('data-ex-check')) hubAppSendEx(exIdx);
             });
 
             // Kolejna proba = tylko gdy cos bylo zaznaczone/wpisane. Selfcheck (wlasne
@@ -8140,6 +8651,44 @@ video {
         // i lista zlych albo pustych luk z tym, co uczen wpisal. Poprawnych odpowiedzi
         // w niej nie ma - nauczyciel je zna, a wiadomosc zostaje krotka.
         // Od 2026-10-24 panel wysylki stoi pod kazda lekcja i wysyla tylko jej cwiczenia.
+        // Hub w app.* (2026-11-02): js/hub-view.js ustawia window.HUB_APP =
+        // {studentId, code}. Wtedy "Sprawdz" zapisuje wynik w bazie (/api/hub/result),
+        // a nauczyciel dostaje powiadomienie. Plik z GitHub Pages nie ma HUB_APP
+        // i nic nie wysyla - tam zostaje panel WhatsApp.
+        // Klucz cwiczenia "monthId|YYYY-MM-DD|tytul" = hub_results.ref = tutor_tasks.ex_ref.
+        function exIso(exIdx) {
+            var m = /^(\d{1,2})\.(\d{2})\.(\d{4})$/.exec(EXERCISES[exIdx].dateLabel || '');
+            return m ? m[3] + '-' + m[2] + '-' + ('0' + m[1]).slice(-2) : '';
+        }
+        function exTitle(exIdx) { return EXERCISES[exIdx].title || ('Ćwiczenie ' + (exIdx + 1)); }
+        function exRef(exIdx) { return (HUB.monthId || '') + '|' + exIso(exIdx) + '|' + exTitle(exIdx); }
+        function hubAppSendEx(exIdx) {
+            var app = window.HUB_APP;
+            if (!app || !app.studentId) return;
+            var ex = EXERCISES[exIdx], st = exSt(exIdx), r = exResult(exIdx);
+            var iso = exIso(exIdx);
+            var title = exTitle(exIdx);
+            var box = el('hub-exercises-list');
+            var sc = box && box.querySelector('[data-ex-score="' + exIdx + '"]');
+            function note(txt) {
+                if (!sc) return;
+                var n = sc.parentNode.querySelector('.hub-ex-saved[data-exsv="' + exIdx + '"]');
+                if (!n) { n = document.createElement('span'); n.className = 'hub-ex-saved'; n.setAttribute('data-exsv', exIdx); n.style.cssText = 'margin-left:8px;font-size:12px;opacity:.75'; sc.parentNode.insertBefore(n, sc.nextSibling); }
+                n.textContent = txt;
+            }
+            note('Zapisuję wynik...');
+            fetch('/api/hub/result', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    studentId: app.studentId, code: app.code, kind: 'cwiczenie',
+                    ref: exRef(exIdx), title: title, lessonDate: iso,
+                    score: r.ok, maxScore: r.total,
+                    answers: { attempt: st.attempts || 1, tag: ex.tag || '', wrong: r.wrong.slice(0, 60) }
+                })
+            }).then(function (res) { note(res.ok ? '✓ Wynik wysłany do nauczyciela' : 'Nie udało się wysłać wyniku, użyj przycisku WhatsApp niżej'); })
+              .catch(function () { note('Brak internetu, wynik nie poszedł. Użyj przycisku WhatsApp niżej'); });
+        }
         function exLessonDate(lbl) {
             for (var i = 0; i < EXERCISES.length; i++) if ((EXERCISES[i].lessonLabel || '') === lbl) return EXERCISES[i].dateLabel || '';
             return '';
@@ -9643,6 +10192,60 @@ video {
             el('fc-new-session').addEventListener('click', function () {
                 resetFlashcardsToSetup();
             });
+            hubAppSendFiszki(totalCorrect, totalAttempts);
+        }
+
+        // Zadane fiszki w app.* (2026-11-03): js/hub-view.js ustawia HUB_APP.task
+        // {id, title, categories}. Wynik sesji idzie do /api/hub/result jako
+        // kind 'fiszki', ref = id zadania. Bez HUB_APP.task (plik z GitHub Pages,
+        // fiszki bez zadania) nic nie wychodzi.
+        function hubAppSendFiszki(correct, total) {
+            var app = window.HUB_APP;
+            if (!app || !app.studentId || !app.task || !app.task.id || !total) return;
+            var box = el('fc-summary');
+            var note = document.createElement('p');
+            note.className = 'fc-summary-sub';
+            note.textContent = 'Zapisuję wynik...';
+            if (box) box.appendChild(note);
+            fetch('/api/hub/result', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    studentId: app.studentId, code: app.code, kind: 'fiszki', ref: app.task.id,
+                    title: app.task.title || 'Fiszki', score: correct, maxScore: total,
+                    answers: { rounds: roundsCompleted, categories: (app.task.categories || []).slice(0, 40) }
+                })
+            }).then(function (res) { note.textContent = res.ok ? '✓ Wynik wysłany do nauczyciela' : 'Nie udało się wysłać wyniku. Spróbuj jeszcze raz.'; })
+              .catch(function () { note.textContent = 'Brak internetu, wynik nie poszedł.'; });
+        }
+
+        // Wejscie z listy zadan (js/hub-view.js): HUB_APP.task -> fiszki z zadanymi
+        // podrozdzialami, HUB_APP.openEx -> zakladka Cwiczenia z rozwinietym cwiczeniem.
+        function hubAppDeepLink() {
+            var app = window.HUB_APP;
+            if (!app) return;
+            if (app.task) {
+                showHubView('flashcards');
+                var want = app.task.categories || [];
+                var boxes = Array.prototype.slice.call(document.querySelectorAll('input[name="fc-category"]'));
+                if (want.length && boxes.some(function (b) { return want.indexOf(b.value) !== -1; })) {
+                    boxes.forEach(function (b) { b.checked = want.indexOf(b.value) !== -1; });
+                }
+                return;
+            }
+            if (app.openEx && !IS_UNIT) {
+                for (var i = 0; i < EXERCISES.length; i++) {
+                    if (exRef(i) !== app.openEx) continue;
+                    showHubView('exercises');
+                    var sc = document.querySelector('#hub-exercises-list [data-ex-score="' + i + '"]');
+                    var card = sc && sc.closest('details');
+                    if (card) {
+                        Array.prototype.forEach.call(document.querySelectorAll('#hub-exercises-list details.hub-ex-card'), function (d) { d.open = d === card; });
+                        card.scrollIntoView({ block: 'start' });
+                    }
+                    return;
+                }
+            }
         }
 
         function startRound(deckArray) {
@@ -9940,6 +10543,7 @@ video {
             wrapEngineNavigation();
 
             showHubView('home');
+            hubAppDeepLink();
         }
 
         // initUI jest podpiete przez window.onload wczesniej w pliku, wiec odpali sie
